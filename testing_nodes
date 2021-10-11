@@ -1,3 +1,4 @@
+//testing
 CREATE QUERY export_nodes(VERTEX <person> p) FOR GRAPH MyGraph { 
   start = {p};
   res_nodes = SELECT s
@@ -5,3 +6,18 @@ CREATE QUERY export_nodes(VERTEX <person> p) FOR GRAPH MyGraph {
               
   PRINT res_nodes;
 }
+
+
+
+
+
+CREATE QUERY export_edge(String output_path = "/home/tigergraph/output/edges.csv") { 
+  File outfile(output_path);
+
+  start = {ANY};
+  res = SELECT s
+        FROM start:s-(rate:r)->movie:m
+        ACCUM outfile.println([s, m]);
+}
+
+INSTALL QUERY export_edge
