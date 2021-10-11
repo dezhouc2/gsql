@@ -1,0 +1,7 @@
+CREATE QUERY export_nodes(VERTEX <person> p) FOR GRAPH MyGraph { 
+  start = {p};
+  res_nodes = SELECT s
+              FROM start:s -(rate:r)->movie:m;
+              
+  PRINT res_nodes;
+}
