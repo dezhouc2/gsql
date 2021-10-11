@@ -1,4 +1,4 @@
-
+//testing
 CREATE QUERY export_edge(VERTEX <person>p) FOR GRAPH MyGraph { 
   
   SumAccum<float>@rating;
@@ -11,3 +11,17 @@ CREATE QUERY export_edge(VERTEX <person>p) FOR GRAPH MyGraph {
   
   PRINT result; 
 }
+
+
+
+
+CREATE QUERY export_edge(String output_path = "/home/tigergraph/output/edges.csv") { 
+  File outfile(output_path);
+
+  start = {ANY};
+  res = SELECT s
+        FROM start:s-(rate:r)->movie:m
+        ACCUM outfile.println([s, r]);
+}
+
+INSTALL QUERY export_edge
