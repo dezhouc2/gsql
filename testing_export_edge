@@ -14,7 +14,7 @@ CREATE QUERY export_edge(VERTEX <person>p) FOR GRAPH MyGraph {
 
 
 
-
+//testing via local
 CREATE QUERY export_edge(String output_path = "/home/tigergraph/output/edges.csv") { 
   File outfile(output_path);
 
