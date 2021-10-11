@@ -1,0 +1,13 @@
+
+CREATE QUERY export_edge(VERTEX <person>p) FOR GRAPH MyGraph { 
+  
+  SumAccum<float>@rating;
+  
+  start = {p};
+  
+  result = SELECT m 
+           FROM start:s-(rate:r)->movie:m
+           ACCUM m.@rating += r.rating;
+  
+  PRINT result; 
+}
