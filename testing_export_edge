@@ -20,8 +20,8 @@ CREATE QUERY export_edge(String output_path = "/home/tigergraph/output/edges.csv
 
   start = {ANY};
   res = SELECT s
-        FROM start:s-(rate:r)->movie:m
-        ACCUM outfile.println([s, r]);
+        FROM start:s-(:e)-:t
+        ACCUM outfile.println([s, t]);
 }
 
 INSTALL QUERY export_edge
